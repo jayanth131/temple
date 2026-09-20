@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AstalashmiRouteImport } from './routes/astalashmi'
+import { Route as DashavataraRouteImport } from './routes/dashavatara'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AstalashmiRoute = AstalashmiRouteImport.update({
+  id: '/astalashmi',
+  path: '/astalashmi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashavataraRoute = DashavataraRouteImport.update({
+  id: '/dashavatara',
+  path: '/dashavatara',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/astalashmi': typeof AstalashmiRoute
+  '/dashavatara': typeof DashavataraRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/astalashmi': typeof AstalashmiRoute
+  '/dashavatara': typeof DashavataraRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/astalashmi': typeof AstalashmiRoute
+  '/dashavatara': typeof DashavataraRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/astalashmi' | '/dashavatara'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/astalashmi' | '/dashavatara'
+  id: '__root__' | '/' | '/astalashmi' | '/dashavatara'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AstalashmiRoute: typeof AstalashmiRoute
+  DashavataraRoute: typeof DashavataraRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/astalashmi': {
+      id: '/astalashmi'
+      path: '/astalashmi'
+      fullPath: '/astalashmi'
+      preLoaderRoute: typeof AstalashmiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashavatara': {
+      id: '/dashavatara'
+      path: '/dashavatara'
+      fullPath: '/dashavatara'
+      preLoaderRoute: typeof DashavataraRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AstalashmiRoute: AstalashmiRoute,
+  DashavataraRoute: DashavataraRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
