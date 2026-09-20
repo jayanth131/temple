@@ -858,11 +858,11 @@ function AshtaLakshmiSection() {
                   </span>
                 </div>
 
-                <h3 className="font-display text-3xl font-semibold text-navy">
+                <h3 className="font-display text-3xl font-semibold text-white">
                   Ashta Lakshmi
                 </h3>
 
-                <p className="mt-2 text-xs leading-6 text-navy/70">
+                <p className="mt-2 text-xs leading-6 text-white">
                   Discover the eight divine forms of prosperity, wisdom,
                   courage, nourishment and grace.
                 </p>
